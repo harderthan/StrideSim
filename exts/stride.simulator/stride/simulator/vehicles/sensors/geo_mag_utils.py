@@ -31,14 +31,20 @@ DECLINATION_TABLE = [
     [ 3,8,11,15,17,17,16,12,5,-4,-12,-18,-19,-18,-16,-12,-8,-4,-0,3,5,7,9,10,10,9,7,4,-1,-6,-10,-12,-12,-9,-5,-1,3 ],
     [ 3,8,12,16,19,20,18,13,4,-8,-18,-24,-25,-23,-20,-16,-11,-6,-1,3,7,11,14,16,17,17,14,8,-0,-8,-13,-15,-14,-11,-7,-2,3 ]]
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 58d8cde (sensors: apply pylint rules)
 # pylint: disable=line-too-long, for the sake of readability.
 
 # Inclination data in degrees
 # pylint: disable=line-too-long, for the sake of readability.
+<<<<<<< HEAD
 =======
 
 # Inclination data in degrees
 >>>>>>> bb17602 (bring 'geo_msg_utils.py' and 'imu.py' files)
+=======
+>>>>>>> 58d8cde (sensors: apply pylint rules)
 INCLINATION_TABLE = [
     [ -78,-76,-74,-72,-70,-68,-65,-63,-60,-57,-55,-54,-54,-55,-56,-57,-58,-59,-59,-59,-59,-60,-61,-63,-66,-69,-73,-76,-79,-83,-86,-87,-86,-84,-82,-80,-78 ],
     [ -72,-70,-68,-66,-64,-62,-60,-57,-54,-51,-49,-48,-49,-51,-55,-58,-60,-61,-61,-61,-60,-60,-61,-63,-66,-69,-72,-76,-78,-80,-81,-80,-79,-77,-76,-74,-72 ],
@@ -54,9 +60,13 @@ INCLINATION_TABLE = [
     [ 62,63,64,65,67,69,71,73,75,75,74,73,70,68,67,66,65,65,65,66,66,67,68,68,69,70,70,71,71,70,69,67,65,63,62,62,62 ],
     [ 71,71,72,73,75,77,78,80,81,81,80,79,77,76,74,73,73,73,73,73,73,74,74,75,76,77,78,78,78,78,77,75,73,72,71,71,71 ]]
 <<<<<<< HEAD
+<<<<<<< HEAD
 # pylint: disable=line-too-long, for the sake of readability.
 =======
 >>>>>>> bb17602 (bring 'geo_msg_utils.py' and 'imu.py' files)
+=======
+# pylint: disable=line-too-long, for the sake of readability.
+>>>>>>> 58d8cde (sensors: apply pylint rules)
 
 # Strength data in centi-Tesla
 STRENGTH_TABLE = [

@@ -3,6 +3,7 @@
 | Author: Marcelo Jacinto (marcelo.jacinto@tecnico.ulisboa.pt)
 | License: BSD-3-Clause. Copyright (c) 2023, Marcelo Jacinto. All rights reserved.
 <<<<<<< HEAD
+<<<<<<< HEAD
 | Description: Simulates an imu. Based on the implementation provided in PX4 stil_gazebo
                (https://github.com/PX4/PX4-SITL_gazebo)
 """
@@ -12,6 +13,12 @@ __all__ = ["Imu"]
 """
 __all__ = ["IMU"]
 >>>>>>> bb17602 (bring 'geo_msg_utils.py' and 'imu.py' files)
+=======
+| Description: Simulates an imu. Based on the implementation provided in PX4 stil_gazebo
+               (https://github.com/PX4/PX4-SITL_gazebo)
+"""
+__all__ = ["Imu"]
+>>>>>>> 58d8cde (sensors: apply pylint rules)
 
 import numpy as np
 from scipy.spatial.transform import Rotation
@@ -35,15 +42,20 @@ class Imu(Sensor):
             only have some of the parameters used by the Imu.
 =======
 
-class IMU(Sensor):
-    """The class that implements the IMU sensor. This class inherits the base class Sensor.
+class Imu(Sensor):
+    """The class that implements the Imu sensor. This class inherits the base class Sensor.
     """
-    def __init__(self, config={}):
-        """Initialize the IMU class
+    def __init__(self, config=None):
+        """Initialize the Imu class
 
         Args:
+<<<<<<< HEAD
             config (dict): A Dictionary that contains all teh parameters for configuring the IMU - it can be empty or only have some of the parameters used by the IMU.
 >>>>>>> bb17602 (bring 'geo_msg_utils.py' and 'imu.py' files)
+=======
+            config (dict): A Dictionary that contains all teh parameters for configuring the Imu - it can be empty or
+            only have some of the parameters used by the Imu.
+>>>>>>> 58d8cde (sensors: apply pylint rules)
 
         Examples:
             The dictionary default parameters are
@@ -64,10 +76,14 @@ class IMU(Sensor):
 
         # Initialize the Super class "object" attributes
 <<<<<<< HEAD
+<<<<<<< HEAD
         super().__init__(sensor_type="Imu", update_rate=config.get("update_rate", 250.0))
 =======
         super().__init__(sensor_type="IMU", update_rate=config.get("update_rate", 250.0))
 >>>>>>> bb17602 (bring 'geo_msg_utils.py' and 'imu.py' files)
+=======
+        super().__init__(sensor_type="Imu", update_rate=config.get("update_rate", 250.0))
+>>>>>>> 58d8cde (sensors: apply pylint rules)
 
         # Orientation noise constant
         self._orientation_noise: float = 0.0
@@ -92,10 +108,14 @@ class IMU(Sensor):
         self._prev_linear_velocity = np.zeros((3,))
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         # Save the current state measured by the Imu
 =======
         # Save the current state measured by the IMU
 >>>>>>> bb17602 (bring 'geo_msg_utils.py' and 'imu.py' files)
+=======
+        # Save the current state measured by the Imu
+>>>>>>> 58d8cde (sensors: apply pylint rules)
         self._state = {
             "orientation": np.array([1.0, 0.0, 0.0, 0.0]),
             "angular_velocity": np.array([0.0, 0.0, 0.0]),
@@ -112,6 +132,9 @@ class IMU(Sensor):
     @Sensor.update_at_rate
     def update(self, state: State, dt: float):
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 58d8cde (sensors: apply pylint rules)
         """Method that implements the logic of an Imu. In this method we start by generating the random walk of the
         gyroscope. This value is then added to the real angular velocity of the vehicle (FLU relative to ENU inertial
         frame expressed in FLU body frame). The same logic is followed for the accelerometer and the accelerations.
@@ -119,6 +142,7 @@ class IMU(Sensor):
         inertial frame, expressed in the FRD body frame. Additionally, the acceleration is also rotated, such that it
         becomes expressed in the body FRD frame of the vehicle. This sensor outputs data that follows the PX4 adopted
         standard.
+<<<<<<< HEAD
 =======
         """Method that implements the logic of an IMU. In this method we start by generating the random walk of the 
         gyroscope. This value is then added to the real angular velocity of the vehicle (FLU relative to ENU inertial frame
@@ -127,6 +151,8 @@ class IMU(Sensor):
         in the FRD body frame. Additionally, the acceleration is also rotated, such that it becomes expressed in the body
         FRD frame of the vehicle. This sensor outputs data that follows the PX4 adopted standard.
 >>>>>>> bb17602 (bring 'geo_msg_utils.py' and 'imu.py' files)
+=======
+>>>>>>> 58d8cde (sensors: apply pylint rules)
 
         Args:
             state (State): The current state of the vehicle.
@@ -157,6 +183,7 @@ class IMU(Sensor):
             angular_velocity[i] = state.angular_velocity[i] + sigma_g_d * np.random.randn() + self._gyroscope_bias[i]
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         # Accelerometer terms.
         tau_a: float = self._accelerometer_bias_correlation_time
 
@@ -167,6 +194,12 @@ class IMU(Sensor):
 
         # Discrete-time standard deviation equivalent to an "integrating" sampler with integration time dt
 >>>>>>> bb17602 (bring 'geo_msg_utils.py' and 'imu.py' files)
+=======
+        # Accelerometer terms.
+        tau_a: float = self._accelerometer_bias_correlation_time
+
+        # Discrete-time standard deviation equivalent to an "integrating" sampler with integration time dt.
+>>>>>>> 58d8cde (sensors: apply pylint rules)
         sigma_a_d: float = 1.0 / np.sqrt(dt) * self._accelerometer_noise_density
         sigma_b_a: float = self._accelerometer_random_walk
 
@@ -177,11 +210,16 @@ class IMU(Sensor):
         phi_a_d: float = np.exp(-1.0 / tau_a * dt)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         # Compute the linear acceleration from diferentiating the velocity of the vehicle expressed in the inertial
         # frame.
 =======
         # Compute the linear acceleration from diferentiating the velocity of the vehicle expressed in the inertial frame
 >>>>>>> bb17602 (bring 'geo_msg_utils.py' and 'imu.py' files)
+=======
+        # Compute the linear acceleration from diferentiating the velocity of the vehicle expressed in the inertial
+        # frame.
+>>>>>>> 58d8cde (sensors: apply pylint rules)
         linear_acceleration_inertial = (state.linear_velocity - self._prev_linear_velocity) / dt
         linear_acceleration_inertial = linear_acceleration_inertial - GRAVITY_VECTOR
 
@@ -189,11 +227,16 @@ class IMU(Sensor):
         self._prev_linear_velocity = state.linear_velocity
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         # Compute the linear acceleration of the body frame, with respect to the inertial frame, expressed in the body
         # frame.
 =======
         # Compute the linear acceleration of the body frame, with respect to the inertial frame, expressed in the body frame
 >>>>>>> bb17602 (bring 'geo_msg_utils.py' and 'imu.py' files)
+=======
+        # Compute the linear acceleration of the body frame, with respect to the inertial frame, expressed in the body
+        # frame.
+>>>>>>> 58d8cde (sensors: apply pylint rules)
         linear_acceleration = np.array(Rotation.from_quat(state.attitude).inv().apply(linear_acceleration_inertial))
 
         # Simulate the accelerometer noise processes and add them to the true linear aceleration values
@@ -207,10 +250,14 @@ class IMU(Sensor):
 
         # --------------------------------------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
         # Apply rotations such that we express the Imu data according to the FRD body frame convention
 =======
         # Apply rotations such that we express the IMU data according to the FRD body frame convention
 >>>>>>> bb17602 (bring 'geo_msg_utils.py' and 'imu.py' files)
+=======
+        # Apply rotations such that we express the Imu data according to the FRD body frame convention
+>>>>>>> 58d8cde (sensors: apply pylint rules)
         # --------------------------------------------------------------------------------------------
 
         # Convert the orientation to the FRD-NED standard
